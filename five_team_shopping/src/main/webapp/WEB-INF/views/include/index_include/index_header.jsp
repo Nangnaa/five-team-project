@@ -75,10 +75,7 @@
       </li> 
       <li class="nav-item">
         <a class="nav-link" href="#">BAG / SHOE</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="notice">PRODUCT REVIEW</a>
-      </li>
+      </li>        
     </ul>
   </div> 
   
