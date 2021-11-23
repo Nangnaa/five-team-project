@@ -1,7 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>teamFive Shoppingmall Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="css/index.css"/>
+  <link rel="stylesheet" href="css/member/signin.css"/>
 
   <!--bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
@@ -13,9 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:wght@100;300;600&display=swap" rel="stylesheet"/>
-  
-  <!--swiper slider-->
-  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
   <style>
   /* .fakeimg {
     height: 200px;
@@ -27,28 +29,11 @@
 
 <div class="jumbotron text-center" style="margin-bottom:0; background-color: aliceblue;">
   <div class="home_info">
-  
-  	<div class="my_ul">
-     		<a class="blogin_btn" id="login_btn" href="/signin"><i class="fas fa-user"></i></a>
-   	</div>
-  <!-- 
-  <c:choose>
-  	<c:when test="${empty user_id }">
-  		<div class="my_ul">
-      		<a class="blogin_btn" id="login_btn" href="/signin"><i class="fas fa-user"></i></a>
-    	</div>
-  	</c:when>
-  	<c:otherwise>
-  		<div class="my_ul">
-	      <a href="#"><i class="fas fa-shopping-basket"></i></a>
-	      <a href="#"><i class="fas fa-user-circle"></i></a>
-	      <a href="#"><i class="fas fa-sign-out-alt"></i></a>
-	    </div>
-  	</c:otherwise>
-  </c:choose>
-     -->
+    <div class="my_ul">
+      <a class="blogin_btn" id="login_btn" href="/signin"><i class="fas fa-user"></i></a>
+    </div>
   </div>
-  <h1><a href="/index" class="logo">My Shopping mall</a></h1>
+  <h1>My Shopping mall</h1>
 </div>
 
 <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #99d2fc;">
@@ -77,7 +62,7 @@
         <a class="nav-link" href="#">BAG / SHOE</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="notice">PRODUCT REVIEW</a>
+        <a class="nav-link" href="#">PRODUCT REVIEW</a>
       </li>
     </ul>
   </div> 
@@ -87,3 +72,23 @@
     <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
   </form> 
 </nav>
+
+<div class="container" style="margin:50px auto;">
+    <main>
+        <div class="login_wrap">
+            <div class="title">LOGIN</div>
+            <div class="login_btn_box">
+                <button type="button" class="login_btn" style="background-color: #3c64ff;">google 로그인</button>
+                <button type="button" class="login_btn" style="background-color: #fae100;">kakao 로그인</button>
+                <button type="button" class="login_btn" style="background-color: #19ce60;">naver 로그인</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <p>Footer</p>
+</div>
+</body>
+<script src="https://kit.fontawesome.com/e4d94e4dfb.js" crossorigin="anonymous"></script>
+</html>
