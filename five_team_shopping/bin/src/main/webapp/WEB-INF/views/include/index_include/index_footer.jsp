@@ -9,8 +9,3 @@
   <div>이청우</div>
   <div>강동욱</div>
 </div>
-
-
-</body>
-<script src="https://kit.fontawesome.com/e4d94e4dfb.js" crossorigin="anonymous"></script>
-</html>

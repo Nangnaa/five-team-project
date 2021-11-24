@@ -1,0 +1,19 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+      
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://115.22.206.139:3306/shoppingmallproject?useUnicode=true
+    username: root
+    password: TestPassword

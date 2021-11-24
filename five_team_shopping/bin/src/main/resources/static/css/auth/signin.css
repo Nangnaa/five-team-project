@@ -1,0 +1,44 @@
+.container{
+    display: flex !important;
+    justify-content: center !important;
+}
+
+main{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    width: 500px; height: 500px;
+    border: 2px solid black;
+    background-color: #fffefa;
+}
+
+.title{
+    font-family: 'Montagu Slab', serif;
+    font-size: 45px;
+    font-weight: 600;
+    color: #99d2fc;
+    padding-bottom: 80px;
+}
+
+.login_btn_box{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+.login_btn{
+    margin: 10px 0px;
+    width: 100%; height: 40px;
+    border: 0px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff
+}

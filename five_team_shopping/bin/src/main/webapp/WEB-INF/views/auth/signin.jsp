@@ -30,3 +30,6 @@
 <!-- footer include -->
 <jsp:include page="../include/index_include/index_footer.jsp"></jsp:include>
 
+</body>
+<script src="https://kit.fontawesome.com/e4d94e4dfb.js" crossorigin="anonymous"></script>
+</html>
