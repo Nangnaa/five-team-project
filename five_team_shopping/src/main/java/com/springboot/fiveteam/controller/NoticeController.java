@@ -15,8 +15,22 @@ import org.springframework.web.servlet.ModelAndView;
 public class NoticeController {
 
 	@GetMapping("/notice")
-	public String indexForm() {
+	public String NoticeForm() {
 		return "notice/notice";
 	}
 	
+	@GetMapping("/notice_dtl")
+	public String NoticeDtlForm() {
+		return "notice/notice_dtl";
+	}
+	
+	@GetMapping("/notice_insert")
+	public String NoticeInsertForm() {
+		return "notice/notice_insert";
+	}
+	
+	@GetMapping("/notice_update")
+	public String NoticeUpdateForm() {
+		return "notice/notice_update";
+	}
 }

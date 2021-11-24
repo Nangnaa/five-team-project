@@ -14,7 +14,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	@Autowired
 	private SqlSession session;
 	
-	private static final String NAME_SPACE = "com.spring.fiveteam.model.dao.NoticeDao.";
+	private static final String NAME_SPACE = "com.springboot.fiveteam.model.dao.NoticeDao.";
 	
 	@Override
 	public List<NoticeDto> getNoticeListAll() {

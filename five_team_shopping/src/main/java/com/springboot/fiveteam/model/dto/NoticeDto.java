@@ -12,9 +12,9 @@ public class NoticeDto {
 	private String originFileNames;
 	private String tempFileNames;
 	
-	private int nextNotice_code; //다음 글 코드
+	private int nextNotice_code;
 	private String nextNotice_title;
-	private int preNotice_code; //이전 글 코드
+	private int preNotice_code;
 	private String preNotice_title;
 	
 	

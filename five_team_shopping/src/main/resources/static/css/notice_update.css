@@ -8,10 +8,12 @@
 main {
     box-sizing: border-box;
     margin: 50px 0px 0px;
+    width: 1100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 main ul {
@@ -27,34 +29,55 @@ main li {
     border-collapse: collapse;
 }
 
-.notice_insert_main {
-    width: 800px;
+.notice_update_main {
+    width: 1100px;
 }
 
-.ni_title_ul li input {
+.nu_title_ul{
+	width: 1100px;
+	height: 30px;
+}
+
+.nu_title_ul .nu_title_li {
+    width: 500px;
+}
+
+.nu_title_ul .notice_title {
     box-sizing: border-box;
     border: none;
     outline: none;
-    width: 598px;
+    width: 600px;
     height: 100%;
     padding: 0px 10px;
 }
 
-.ni_title_ul .ni_title_li {
-    width: 200px;
-}
-
-.ni_info_ul li{
+.nu_info_ul li{
     width: 100%;
+    height: 30px;
 }
 
-.ni_content_ul textarea {
+.nu_content_ul textarea {
     border-collapse: collapse;
     box-sizing: border-box;
     border: none;
     outline: none;
     padding: 20px;
-    width: 798px;
+    width: 1098px;
     height: 600px;
     resize: none;
+}
+
+
+.update_btn{
+	margin: 15px;
+}
+
+.update_btn .notice_submit{
+	margin-right: 50px;
+	background-color: rgb(110, 226, 255);
+}
+
+.update_btn .notice_reset{
+	margin-left: 50px;
+	background-color: rgb(216, 255, 110);
 }
