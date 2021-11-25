@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 8100
   servlet:
     context-path: /
     encoding:
@@ -17,3 +17,8 @@ spring:
     url: jdbc:mysql://115.22.206.139:3306/shoppingmallproject?useUnicode=true
     username: root
     password: TestPassword
+    
+    
+mybatis:
+  mapper-locations:
+  - /mappers/*.xml

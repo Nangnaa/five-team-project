@@ -18,11 +18,15 @@
     <main>
         <div class="login_wrap">
             <div class="title">LOGIN</div>
+            <div class="subtitle">My Shoppingmall에 오신 걸 환영합니다.</div>
             <div class="login_btn_box">
                 <button type="button" class="login_btn" style="background-color: #3c64ff;">google 로그인</button>
                 <button type="button" class="login_btn" style="background-color: #fae100;">kakao 로그인</button>
                 <button type="button" class="login_btn" style="background-color: #19ce60;">naver 로그인</button>
-            </div>
+                <div class="managerlogin_btn_box">
+                	<a class="managerlogin_btn" href="auth/manager/signin">manager 로그인</a>
+                </div>
+              </div>
         </div>
     </main>
 </div>
