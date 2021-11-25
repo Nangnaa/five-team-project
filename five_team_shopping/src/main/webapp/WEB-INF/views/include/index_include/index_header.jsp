@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 
 
   <!--bootstrap-->
@@ -27,13 +31,8 @@
 
 <div class="jumbotron text-center" style="margin-bottom:0; background-color: aliceblue;">
   <div class="home_info">
-  
-  	<div class="my_ul">
-     		<a class="blogin_btn" id="login_btn" href="/signin"><i class="fas fa-user"></i></a>
-   	</div>
-  <!-- 
   <c:choose>
-  	<c:when test="${empty user_id }">
+  	<c:when test="${empty principal.user }">
   		<div class="my_ul">
       		<a class="blogin_btn" id="login_btn" href="/signin"><i class="fas fa-user"></i></a>
     	</div>
@@ -41,12 +40,12 @@
   	<c:otherwise>
   		<div class="my_ul">
 	      <a href="#"><i class="fas fa-shopping-basket"></i></a>
-	      <a href="#"><i class="fas fa-user-circle"></i></a>
-	      <a href="#"><i class="fas fa-sign-out-alt"></i></a>
+	      <a href="/myaccount"><i class="fas fa-user-circle"></i></a>
+	      <a href="/logout"><i class="fas fa-sign-out-alt"></i></a>
 	    </div>
   	</c:otherwise>
   </c:choose>
-     -->
+
   </div>
   <h1><a href="/index" class="logo">My Shopping mall</a></h1>
 </div>
