@@ -20,6 +20,10 @@ public class TestController {
 	public String cartForm() {
 		return "order/cart";
 	}
-
-	
+/*
+	@GetMapping("/manager")
+	public String managerHome() {
+		return "manager/managerHome";
+	}
+	*/
 }

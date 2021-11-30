@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class ManagerController {
-	
+	/*
 	private final UserRepository userRepository;
 	private final HttpSession session;
 
@@ -23,8 +23,10 @@ public class ManagerController {
 	public String managerLoginForm() {
 		return "auth/managerSignin";
 	}
+	*/
 	
 	// 관리자 로그인
+	/*
 	@PostMapping("/manger/signin")
 	public String managerLogin(User user) {
 		User managerEnity = userRepository.mSignin(user.getUser_id(), user.getUser_password());
@@ -35,6 +37,12 @@ public class ManagerController {
 			session.setAttribute("managerPrincipal", managerEnity);
 			return "redirect:/manager";
 		}
+	}
+	*/
+	
+	@GetMapping("/manager")
+	public String managerHome() {
+		return "manager/managerHome";
 	}
 	
 }

@@ -49,7 +49,7 @@
 				</c:when>
 				<c:when test="${principal.user eq 'manager'}">
 					<div class="my_ul">
-				      <a href="/auth/manager/signin"><i class="fas fa-user-cog"></i></a>
+				      <a href="/auth/manager/signin"><i class="fas fa-user-cog"></i>MANAGER</a>
 				    </div>
 				</c:when>
 				<c:otherwise>
