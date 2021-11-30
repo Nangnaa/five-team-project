@@ -16,4 +16,14 @@ public class IndexController {
 		return "auth/signin";
 	}
 	
+	@GetMapping("/myaccount")
+	public String accountForm() {
+		return "myaccount/myaccount";
+	}
+	
+	@GetMapping("/order")
+	public String orderForm() {
+		return "order/order";
+	}
+	
 }
