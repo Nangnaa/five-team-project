@@ -71,4 +71,8 @@
 			user_password = #{user_password}
 		</if>
 	</select>
+	<select id="lookupUser" resultType="com.springboot.fiveteam.domain.user.User" >
+		select *
+		from table_user
+	</select>
 </mapper>

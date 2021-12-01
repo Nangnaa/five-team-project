@@ -10,4 +10,5 @@ public interface UserRepository {
 	public int myAccountUpdate(User userEntity);
 	public int myAccountDelete(String user_id);
 	public User mSignin(String user_id, String user_password);
+	public User lookupUser();
 }
