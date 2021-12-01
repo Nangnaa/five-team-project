@@ -8,9 +8,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="css/index.css"/>
-  
-
-
+  <script src="https://kit.fontawesome.com/e4d94e4dfb.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <!-- header include -->
 <jsp:include page="include/index_include/index_header.jsp"></jsp:include>
 
@@ -38,8 +37,6 @@
 <!-- footer include -->
 <jsp:include page="include/index_include/index_footer.jsp"></jsp:include>
 </body>
-<script src="https://kit.fontawesome.com/e4d94e4dfb.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <!-- Initialize Swiper -->
 <script>
   var swiper = new Swiper(".mySwiper", {

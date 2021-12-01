@@ -16,7 +16,9 @@ public class User {
 	public String user_id;
 	public String user_password;
 	public String user_name;
-	public String user_address;
+	public String user_zipcode;
+	public String user_address1;
+	public String user_address2;
 	public String user_tel;
 	public String user_email;
 	public String user_role;

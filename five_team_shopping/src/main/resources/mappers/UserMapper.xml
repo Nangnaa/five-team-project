@@ -21,10 +21,13 @@
 			#{user_id},
 			#{user_password},
 			#{user_name},
-			#{user_address},
+			#{user_zipcode},
+			#{user_address1},
+			#{user_address2},
 			#{user_tel},
 			#{user_email},
 			#{user_role},
+			#{provider},
 			now(),
 			now()
 		);
@@ -38,4 +41,22 @@
 		where
 			user_id = #{user_id};
 	</select>
+	
+	<update id="myAccountUpdate" parameterType="com.springboot.fiveteam.domain.user.User">
+		update
+			table_user 
+		set
+			user_name = #{user_name},
+			user_zipcode = #{user_zipcode},
+			user_address1 = #{user_address1},
+			user_address2 = #{user_address2},
+			user_tel = #{user_tel},
+			update_date = now()
+		where
+			user_id = #{user_id}
+	</update>
+	
+	<delete id="myAccountDelete">
+		delete from table_user where user_id = #{user_id};
+	</delete>
 </mapper>

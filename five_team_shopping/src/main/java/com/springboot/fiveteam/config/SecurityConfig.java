@@ -32,11 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.anyRequest() // antMatcher 외에 모든요청
 		.permitAll() // antMatcher 경로 외 다른 경로는 요청이 없어도 무관(모든 권한을 부여한다)
 		.and()
-		.formLogin() // 로그인 페이지 커스텀
-		.loginPage("/signin") // 해당 로그인 페이지
-		.loginProcessingUrl("/signin") // post요청(로그인 요청), 자동처리하므로 컨트롤러 따로 만들필요가 없다
-		.defaultSuccessUrl("/") // 로그인 성공시 이동할 URL
-		.and()
 		.oauth2Login()
 		.loginPage("/signin")
 		.userInfoEndpoint()
@@ -45,7 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		2. 액세스 토큰(권한)
 		3. 사용자 프로필 정보 가져오기
 		 */
-		.userService(principalOauth2UserService); // 가져온 프로필 후처리(사용되어질 서비스가 필요함)
+		.userService(principalOauth2UserService) // 가져온 프로필 후처리(사용되어질 서비스가 필요함)
+		.and()
+		.defaultSuccessUrl("/myaccount-first"); // 로그인 성공시 이동할 URL
 	}
-
 }

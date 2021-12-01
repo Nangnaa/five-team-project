@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.fiveteam.domain.user.User;
 import com.springboot.fiveteam.domain.user.UserRepository;
+import com.springboot.fiveteam.web.dto.MyAccountDto;
 import com.springboot.fiveteam.web.dto.SignupDto;
 
 import lombok.RequiredArgsConstructor;
@@ -28,5 +29,21 @@ public class AuthServiceImpl implements AuthService {
 			int signupResult = userRepository.signup(user);
 			return signupResult; // 0 또는 1 return (0: DB오류, 1: 성공)
 		}
+	}
+	
+	@Override
+	public int myAccountUpdate(String user_id, MyAccountDto myAccountDto) {
+		int result = 0;
+		User userEntity = myAccountDto.toEntity();
+		userEntity.setUser_id(user_id);
+		result += userRepository.myAccountUpdate(userEntity);
+		return result;
+	}
+
+	@Override
+	public int myAccountDelete(String user_id) {
+		int result = 0;
+		result += userRepository.myAccountDelete(user_id);
+		return result;
 	}
 }
