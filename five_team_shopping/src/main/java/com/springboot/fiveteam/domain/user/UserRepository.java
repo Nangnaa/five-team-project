@@ -9,4 +9,5 @@ public interface UserRepository {
 	public User getUser(String user_id);
 	public int myAccountUpdate(User userEntity);
 	public int myAccountDelete(String user_id);
+	public User mSignin(String user_id, String user_password);
 }
