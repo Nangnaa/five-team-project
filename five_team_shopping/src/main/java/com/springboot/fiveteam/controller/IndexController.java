@@ -1,4 +1,4 @@
-package com.springboot.fiveteam.web.controller;
+package com.springboot.fiveteam.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +14,16 @@ public class IndexController {
 	@GetMapping("/signin")
 	public String loginForm() {
 		return "auth/signin";
+	}
+	
+	@GetMapping("/myaccount")
+	public String accountForm() {
+		return "myaccount/myaccount";
+	}
+	
+	@GetMapping("/order")
+	public String orderForm() {
+		return "order/order";
 	}
 	
 }

@@ -14,11 +14,6 @@ spring:
       
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://115.22.206.139:3306/shoppingmallproject?useUnicode=true
+    url: jdbc:mysql://118.38.253.243:3306/shoppingmallproject?useUnicode=true
     username: root
     password: TestPassword
-    
-    
-mybatis:
-  mapper-locations:
-  - /mappers/*.xml
