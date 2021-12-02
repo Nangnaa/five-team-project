@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.springboot.fiveteam.config.auth.PrincipalDetails;
-import com.springboot.fiveteam.domain.user.User;
-import com.springboot.fiveteam.domain.user.UserRepository;
 import com.springboot.fiveteam.web.dto.MyAccountDto;
 import com.springboot.fiveteam.web.service.AuthService;
 
@@ -23,8 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class AuthController {
 	
 	private final AuthService authService; // @RequiredArgsConstructor 사용을 위해 final 필요
-	private final UserRepository userRepository;
-	
+
 	@GetMapping("/signin")
 	public String loginForm() { // 로그인 진입
 		return "auth/signin"; // 
@@ -54,8 +51,15 @@ public class AuthController {
 	
 	@ResponseBody
 	@PutMapping("/myaccountupdate/{user_id}")
-	public String myAccountUpdate(@PathVariable String user_id, @RequestBody MyAccountDto myAccountDto) { // 회원정보 수정
+	public String myAccountUpdate(@PathVariable String user_id, @RequestBody MyAccountDto myAccountDto, @AuthenticationPrincipal PrincipalDetails principalDetails) { // 회원정보 수정
 		int result = authService.myAccountUpdate(user_id, myAccountDto);
+		if (result == 1) {
+			principalDetails.getUser().setUser_name(myAccountDto.user_name);
+			principalDetails.getUser().setUser_zipcode(myAccountDto.user_zipcode);
+			principalDetails.getUser().setUser_address1(myAccountDto.user_address1);
+			principalDetails.getUser().setUser_address2(myAccountDto.user_address2);
+			principalDetails.getUser().setUser_tel(myAccountDto.user_tel);
+		}
 		return Integer.toString(result);
 	}
 	
