@@ -36,8 +36,7 @@
                 <div class="item_msg">
                     <span class="msg_user_name_1">성함은 필수 입력사항입니다.</span>
                     <span class="msg_user_name_2">성함은 2~20자까지 입력 가능합니다.</span>
-                </div>
-                
+                </div>    
             </div>
             
             <div class="item_add">
@@ -419,7 +418,6 @@
     	        }
     	    }).open();   
     	}
-    	
     </script>
 </body>
 </html>
