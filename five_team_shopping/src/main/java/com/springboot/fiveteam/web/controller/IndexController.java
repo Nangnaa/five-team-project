@@ -10,7 +10,7 @@ public class IndexController {
 	public String indexForm() {
 		return "index";
 	}
-	
+	/*
 	@GetMapping("/signin")
 	public String loginForm() {
 		return "auth/signin";
@@ -20,7 +20,7 @@ public class IndexController {
 	public String accountForm() {
 		return "myaccount/myaccount";
 	}
-	
+	*/
 	@GetMapping("/order")
 	public String orderForm() {
 		return "order/order";

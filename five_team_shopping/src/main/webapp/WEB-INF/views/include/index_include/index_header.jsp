@@ -41,11 +41,6 @@
 	<div class="jumbotron text-center"
 		style="margin-bottom: 0; background-color: aliceblue;">
 		<div class="home_info">
-
-			<div class="my_ul">
-				<a class="blogin_btn" id="login_btn" href="/signin"><i
-					class="fas fa-user"></i></a>
-			</div>
 			<c:choose>
 				<c:when test="${empty principal.user }">
 					<div class="my_ul">

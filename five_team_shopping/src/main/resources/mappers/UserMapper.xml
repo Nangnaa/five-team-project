@@ -59,7 +59,7 @@
 	<delete id="myAccountDelete">
 		delete from table_user where user_id = #{user_id};
 	</delete>
-	<select id="mSignin" resultType="com.springboot.security.domain.user.User">
+	<select id="mSignin" parameterType="com.springboot.fiveteam.domain.user.User" resultType="com.springboot.fiveteam.domain.user.User">
 		select
 			*
 		from 
@@ -71,8 +71,20 @@
 			user_password = #{user_password}
 		</if>
 	</select>
+	
 	<select id="lookupUser" resultType="com.springboot.fiveteam.domain.user.User" >
-		select *
-		from table_user
+		select * from table_user
+	</select>
+	
+	<select id="mfind" resultType="com.springboot.fiveteam.domain.user.User">
+		select 
+			*
+		from table_user 
+		where user_role = 'ROLE_MANAGER';
+	</select>
+	
+	<select id="mfindUserList" parameterType="com.springboot.fiveteam.domain.user.User" resultType="com.springboot.fiveteam.domain.user.User">
+		select * from table_user 
+		where user_name = #{user_name};
 	</select>
 </mapper>

@@ -2,6 +2,8 @@ package com.springboot.fiveteam.domain.user;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface UserRepository {
 	public int useridCheck(User user); // 아이디 중복확인
@@ -10,5 +12,8 @@ public interface UserRepository {
 	public int myAccountUpdate(User userEntity);
 	public int myAccountDelete(String user_id);
 	public User mSignin(String user_id, String user_password);
-	public User lookupUser();
+	//public User lookupUser(String user_id);
+	public List<User> lookupUser();
+	public User mfind();
+	public List<User> mfindUserList(String user_name);
 }

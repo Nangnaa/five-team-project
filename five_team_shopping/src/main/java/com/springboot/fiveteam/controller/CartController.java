@@ -16,7 +16,7 @@ import com.springboot.fiveteam.service.CartService;
 public class CartController {
 
  //컨트롤러에서 메소드의 파라미터들은 갯수제한이 없고, 순서가 상관이 없다.
-
+/*
 
     @RequestMapping("insert.do") //세부적인 url mapping
 
@@ -31,6 +31,7 @@ public class CartController {
 
             return "auth/signin";
         }
+        // dto.setUser_id(user_id);
         dto.setUser_id(user_id);
         cartService.insert(dto); //장바구니 테이블에 저장됨
         return "redirect:/shop/cart/list.do"; //장바구니 목록으로 이동
@@ -83,5 +84,7 @@ public class CartController {
             return new ModelAndView("auth/login", "", null);
             //로그인을 하지 않았으면 로그인 페이지로 이동시킨다.
         }
+        
+    */
     }
 
