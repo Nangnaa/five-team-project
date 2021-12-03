@@ -77,5 +77,4 @@
 </main>
 <!-- footer include -->
 <jsp:include page="../include/index_include/index_footer.jsp"></jsp:include>
-<script src="/js/search.js"></script>
 </html>

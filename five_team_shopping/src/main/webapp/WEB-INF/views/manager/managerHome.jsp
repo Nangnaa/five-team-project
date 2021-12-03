@@ -36,18 +36,12 @@
             </div>
           </div>
         </div>
-
-        
       </div>
-
-     
     </div>
-
   </div>
-
 
 </div>
 
 <!-- footer include -->
 <jsp:include page="../include/index_include/index_footer.jsp"></jsp:include>
-</html>
+
