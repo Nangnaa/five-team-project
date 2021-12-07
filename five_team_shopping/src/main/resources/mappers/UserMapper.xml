@@ -59,6 +59,7 @@
 	<delete id="myAccountDelete">
 		delete from table_user where user_id = #{user_id};
 	</delete>
+<<<<<<< HEAD
 	<select id="mSignin" parameterType="com.springboot.fiveteam.domain.user.User" resultType="com.springboot.fiveteam.domain.user.User">
 		select
 			*
@@ -90,3 +91,6 @@
 		where user_name = #{user_name};
 	</select>
 </mapper>
+=======
+</mapper>
+>>>>>>> MiteM

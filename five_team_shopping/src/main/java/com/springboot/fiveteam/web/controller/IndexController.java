@@ -10,6 +10,7 @@ public class IndexController {
 	public String indexForm() {
 		return "index";
 	}
+<<<<<<< HEAD
 	/*
 	@GetMapping("/signin")
 	public String loginForm() {
@@ -27,3 +28,6 @@ public class IndexController {
 	}
 	
 }
+=======
+}
+>>>>>>> MiteM
