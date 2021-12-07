@@ -74,7 +74,7 @@ public class ManagerController {
 	    //User managerEntity = (User) session.getAttribute("managerPrincipal");
 		  
 	  User managerEntity = (User) userRepository.mfind();
-	  if (managerEntity.user_role.equals("ROLE_MANAGER")) {
+	  if (managerEntity.getUser_role().equals("ROLE_MANAGER")) {
 		  managerEntity = (User) session.getAttribute("managerPrincipal");
 		}
 		  

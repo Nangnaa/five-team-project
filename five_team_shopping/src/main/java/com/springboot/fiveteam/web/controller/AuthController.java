@@ -32,7 +32,7 @@ public class AuthController {
 		if (principalDetails == null) { // 로그인 상태가 아닐경우
 			return "auth/signin"; 
 		} else { // 로그인 상태일경우
-			if (principalDetails.getUser().user_zipcode == null || principalDetails.getUser().user_address1 == null || principalDetails.getUser().user_tel == null) {
+			if (principalDetails.getUser().getUser_zipcode() == null || principalDetails.getUser().getUser_address1() == null || principalDetails.getUser().getUser_tel() == null) {
 				return "auth/myaccount";
 			} else {
 				return "redirect:/index";
