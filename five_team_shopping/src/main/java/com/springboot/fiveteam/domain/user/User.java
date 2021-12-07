@@ -12,17 +12,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor // 기본생성자
 @Data
 public class User {
-	public int seqnum;
-	public String user_id;
-	public String user_password;
-	public String user_name;
-	public String user_zipcode;
-	public String user_address1;
-	public String user_address2;
-	public String user_tel;
-	public String user_email;
-	public String user_role;
-	public String provider;
-	public Date create_date;
-	public Date update_date;
+	private int seqnum;
+	private String user_id;
+	private String user_password;
+	private String user_name;
+	private String user_zipcode;
+	private String user_address1;
+	private String user_address2;
+	private String user_tel;
+	private String user_email;
+	private String user_role;
+	private String provider;
+	private Date create_date;
+	private Date update_date;
 }
