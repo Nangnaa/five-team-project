@@ -20,7 +20,10 @@
             <div class="login_btn_box">
                 <button type="button" class="login_btn" style="background-color: #3c64ff" onclick="location.href='/oauth2/authorization/google'">google 로그인</button>
                 <button type="button" class="login_btn" style="background-color: #19ce60" onclick="location.href='/oauth2/authorization/naver'">naver 로그인</button>
-            </div>
+                <div class="managerlogin_btn_box">
+                	<a class="managerlogin_btn" href="auth/manager/signin">manager 로그인</a>
+                </div>
+              </div>
         </div>
     </main>
 </div>

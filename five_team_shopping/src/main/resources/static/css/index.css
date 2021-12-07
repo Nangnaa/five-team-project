@@ -114,3 +114,27 @@ li.nav-item {
   .swiper-button-prev{
     color: black !important;
   }
+  
+footer{
+	height: 100%;
+}
+.footer_title{
+	font-weight: 700;
+	font-size:20px;
+	padding-bottom: 20px;
+}
+.footer_box{
+	width: 100%;
+	text-align: center;
+	
+}
+.footer_names{
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+.team_name{
+	padding-right: 20px;
+}
