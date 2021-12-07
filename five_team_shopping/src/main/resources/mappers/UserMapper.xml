@@ -65,11 +65,13 @@
 		from 
 			table_user
 		where
-		<if test='user_id.equals("manager") and user_password.equals("1234")'>
+		
 			user_id = #{user_id}
 			and
 			user_password = #{user_password}
-		</if>
+			and
+			user_role = 'ROLE_MANAGER';
+
 	</select>
 	
 	<select id="lookupUser" resultType="com.springboot.fiveteam.domain.user.User" >

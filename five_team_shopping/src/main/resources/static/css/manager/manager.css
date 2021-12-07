@@ -129,3 +129,54 @@
     display: flex;
     align-items: center;
 }
+
+/*---------------manager Home ----------------*/
+a:hover { text-decoration:none !important }
+
+.card-title{
+	color: black;
+}
+.card-tdivext{
+	color: black;
+}
+
+
+/*----------productDetail-----------------*/
+.detail_main{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	padding-top: 30px;
+}
+.detail_main .img-part{
+	padding-right: 30px;
+}
+.detail_main .img-part img{
+	width: 450px;
+}
+.detail_main .info-part{
+	width: 100%;
+}
+.edit-btn-box{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+.edit-btn-box .edit-btn{
+	padding-right: 20px;
+}
+.edit-btn-box .edit-btn a:link{
+	color: black;
+}
+.edit-btn-box .edit-btn a:active{
+	color: black;
+}
+.edit-btn-box .delete-btn{
+}
+.edit-btn-box .delete-btn button{
+	border: 0px;
+	background: red;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 500;
+}

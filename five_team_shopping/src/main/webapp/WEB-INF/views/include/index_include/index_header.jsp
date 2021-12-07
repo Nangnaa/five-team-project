@@ -76,13 +76,13 @@
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="#">OUTER</a></li>
+				<li class="nav-item"><a class="nav-link" href="#" value="outer">OUTER</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">TOP</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">PANTS</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">SKIRT</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">JEWERLY</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">BAG /
-						SHOE</a></li>
+						SHOES</a></li>
 			</ul>
 		</div>
 

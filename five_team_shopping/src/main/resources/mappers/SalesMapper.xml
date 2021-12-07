@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.springboot.fiveteam.domain.sales.SalesRepository">
+
+	<resultMap type="com.springboot.fiveteam.domain.sales.Sales" id="maps">
+		<result column="salesImg" property="salesImg" jdbcType="BLOB"/>
+	</resultMap>
+	
+	
+	<insert id="save" parameterType="com.springboot.fiveteam.domain.sales.Sales">
+		insert into
+			table_sales
+		values(
+			0,
+			#{category},
+			#{sales_title},
+			#{sales_price},
+			#{sales_content},
+			#{salesImg},
+			now(),
+			now()
+		);
+	</insert>
+	
+	<select id="findById" parameterType="com.springboot.fiveteam.domain.sales.Sales" resultType="com.springboot.fiveteam.domain.sales.Sales">
+		select
+			*
+		from
+			table_sales
+		where
+			sales_id = #{sales_id};
+	</select>
+	<select id="findAll" resultType="com.springboot.fiveteam.domain.sales.Sales" resultMap="maps">
+		select
+			*
+		from
+			table_sales;
+	</select>
+	<!-- 
+	<select id="findAlls" parameterType="com.springboot.fiveteam.domain.sales.Sales" resultType="com.springboot.fiveteam.domain.sales.Sales">
+		select
+			*
+		from
+			table_sales;
+	</select> -->
+	<delete id="deleteById" parameterType="Integer">
+		delete
+		from table_sales
+		where sales_id = #{sales_id};
+	</delete>
+</mapper>

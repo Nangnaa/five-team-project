@@ -18,5 +18,6 @@
 </footer>
 </body>
 <script src="https://kit.fontawesome.com/e4d94e4dfb.js" crossorigin="anonymous"></script>
-<script src="/js/search.js"></script>
+<script src="/js/manager/search.js"></script>
+<script src="/js/manager/script.js"></script>
 </html>
