@@ -10,7 +10,7 @@ public interface SalesRepository {
 	public Sales findById(int sales_id);
 	public List<Sales> findAll(SalesDto salesDto);
 	public int deleteById(int sales_id);
-	List<Sales> getSalesList(String category);
-	List<Sales> getSalesListSearch(String category, String sales_title);
-	Sales getSalesOne(String sales_id);
+	public List<Sales> getSalesList(String category);
+	public List<Sales> getSalesListSearch(String category, String sales_title);
+	public Sales getSalesOne(String sales_id);
 }
