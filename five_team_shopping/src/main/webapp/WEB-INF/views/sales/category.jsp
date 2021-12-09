@@ -35,9 +35,9 @@
     <c:forEach var="sales" items="${salesList }">
       <div class="p-2 flex-fill">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="images/pic1.jpg" alt="Card image cap">
+          <img class="card-img-top" src="/images/${sales.category}_list/${sales.salesImg}" alt="image cap" width="200" height="350">
           <div class="card-body">
-            <h5 class="card-title">${sales.sales_title }</h5>
+            <h5 class="card-title"><a href="/category/${sales.category}/salesview/salesid:${sales.sales_id}">${sales.sales_title }</a></h5>
             <p class="card-text">${sales.sales_price }원</p>
           </div>
         </div>

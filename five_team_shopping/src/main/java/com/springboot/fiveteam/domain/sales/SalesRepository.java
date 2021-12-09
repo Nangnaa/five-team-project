@@ -13,4 +13,5 @@ public interface SalesRepository {
 	public List<Sales> getSalesList(String category);
 	public List<Sales> getSalesListSearch(String category, String sales_title);
 	public Sales getSalesOne(String sales_id);
+
 }

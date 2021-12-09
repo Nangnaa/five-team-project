@@ -11,16 +11,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor // 매개변수 있는 생성자
 @NoArgsConstructor // 기본생성자
 @Data
-public class Sales {
-
-	private int sales_id;
-	private String category;
-	private String sales_title;
-	private int sales_price;
-	private String sales_content;
-	private String salesImg;
-	private String sales_size;
-	private String sales_color;
+public class Review {
+	private int review_id;
+	private String review_content;
+	private int review_score;
 	private Date create_date;
-	private Date update_date;
+	private String user_id;
+	private String user_name;
+	private int sales_id;
+	private String ip;
 }

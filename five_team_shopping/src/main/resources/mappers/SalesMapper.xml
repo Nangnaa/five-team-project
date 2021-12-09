@@ -46,27 +46,30 @@
 		where sales_id = #{sales_id};
 	</delete>
 	
+	<!-- 상품들 조회 -->
 	<select id="getSalesList" resultType="com.springboot.fiveteam.domain.sales.Sales">
 		select
-			sales_id, category, sales_title, sales_price, sales_content, create_date, update_date
+			*
 		from
 			table_sales
 		where
 			category = #{category};
 	</select>
 	
+	<!-- 검색하여 상품들 조회 -->
 	<select id="getSalesListSearch" resultType="com.springboot.fiveteam.domain.sales.Sales">
 		select
-			sales_id, category, sales_title, sales_price, sales_content, create_date, update_date
+			*
 		from
 			table_sales
 		where
 			category = #{category} and sales_title like '%${sales_title}%';
 	</select>
 	
+	<!-- 한 상품 상세조회 -->
 	<select id="getSalesOne" resultType="com.springboot.fiveteam.domain.sales.Sales">
 		select
-			sales_id, category, sales_title, sales_price, sales_content, create_date, update_date
+			*
 		from
 			table_sales
 		where

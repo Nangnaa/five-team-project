@@ -9,11 +9,11 @@ import lombok.Data;
 @Data
 public class MyAccountDto {
 	
-	public String user_name;
-	public String user_zipcode;
-	public String user_address1;
-	public String user_address2;
-	public String user_tel;
+	private String user_name;
+	private String user_zipcode;
+	private String user_address1;
+	private String user_address2;
+	private String user_tel;
 
 	public User toEntity() {
 		return User.builder()

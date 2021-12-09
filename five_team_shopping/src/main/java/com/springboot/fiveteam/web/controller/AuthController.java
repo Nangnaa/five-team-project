@@ -54,11 +54,11 @@ public class AuthController {
 	public String myAccountUpdate(@PathVariable String user_id, @RequestBody MyAccountDto myAccountDto, @AuthenticationPrincipal PrincipalDetails principalDetails) { // 회원정보 수정
 		int result = authService.myAccountUpdate(user_id, myAccountDto);
 		if (result == 1) {
-			principalDetails.getUser().setUser_name(myAccountDto.user_name);
-			principalDetails.getUser().setUser_zipcode(myAccountDto.user_zipcode);
-			principalDetails.getUser().setUser_address1(myAccountDto.user_address1);
-			principalDetails.getUser().setUser_address2(myAccountDto.user_address2);
-			principalDetails.getUser().setUser_tel(myAccountDto.user_tel);
+			principalDetails.getUser().setUser_name(myAccountDto.getUser_name());
+			principalDetails.getUser().setUser_zipcode(myAccountDto.getUser_zipcode());
+			principalDetails.getUser().setUser_address1(myAccountDto.getUser_address1());
+			principalDetails.getUser().setUser_address2(myAccountDto.getUser_address2());
+			principalDetails.getUser().setUser_tel(myAccountDto.getUser_tel());
 		}
 		return Integer.toString(result);
 	}

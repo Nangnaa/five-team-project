@@ -111,3 +111,20 @@ select{
 .dtl_btn:hover{
     background: #ccc;
 }
+
+.review_delete {
+	color : blue;
+}
+
+.review_delete:hover {
+	cursor:pointer;
+	text-decoration:none;
+}
+
+.reviewWrite_stars, .review_stars{
+	margin:0px 0px 4px;
+}
+
+.reviewWrite_stars:hover {
+	cursor:pointer;
+}

@@ -73,8 +73,6 @@
                 <span class="msg_user_tel_5">잘못된 인증번호입니다. 빠른 시간 내에 다시 입력하거나, '인증요청' 버튼을 클릭하여 인증번호를 재발급 받으십시오.</span>
                 <span class="msg_user_tel_6">인증이 완료되었습니다.</span>
             </div>
-            
-
             <div>
                 <button class="footer_b" type="button">저장하기</button>
                 <button class="footer_b" type="button">취소</button>
