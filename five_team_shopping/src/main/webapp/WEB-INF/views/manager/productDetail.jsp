@@ -25,7 +25,8 @@
                     <p class="tit">${salesEntity.sales_content}</p>
                   </div>
                   <div class="product_info_content">
-                   
+                   	<h6>size: ${salesEntity.sales_size }</h6>
+                   	<h6>color: ${salesEntity.sales_color }</h6>
                   </div>
                    <hr />
                    <div class="product_price_box">

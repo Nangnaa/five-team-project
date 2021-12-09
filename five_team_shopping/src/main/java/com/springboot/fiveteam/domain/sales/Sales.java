@@ -1,6 +1,10 @@
 package com.springboot.fiveteam.domain.sales;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.data.annotation.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,6 +18,10 @@ import lombok.NoArgsConstructor;
 public class Sales {
 
 	private int sales_id;
+	
+	 @Transient
+    private List<String> categorys = Arrays.asList("outer", "top", "pants", "skirt", "jewerly", "bagandshoes");
+	
 	private String category;
 	private String sales_title;
 	private int sales_price;
@@ -23,4 +31,6 @@ public class Sales {
 	private String sales_color;
 	private Date create_date;
 	private Date update_date;
+	
+
 }

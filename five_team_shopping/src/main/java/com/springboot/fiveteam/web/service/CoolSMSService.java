@@ -12,8 +12,8 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class CoolSMSService {
 	
 	// https://console.coolsms.co.kr/ 에서 발급
-	private final String API_KEY = "NCSEIEJ0ZKPYS9JU";
-	private final String API_SECRET = "DIAAAAJYLV2ROCCNT3RSRLFPRW7A5UWS";
+	private final String API_KEY = "NCSAMTCHMA22Z8JQ";
+	private final String API_SECRET = "PMF75MMIVJKLWRKZUPSXRQTEHW2VF0FV";
 	
 	public String createAuthenticationCode() { // 랜덤 코드 4자리 생성 메소드
 		String authenticationCode = "";
