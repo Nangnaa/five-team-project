@@ -1,5 +1,8 @@
 package com.springboot.fiveteam.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,19 +13,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.springboot.fiveteam.domain.sales.Sales;
 import com.springboot.fiveteam.domain.sales.SalesRepository;
+import com.springboot.fiveteam.domain.sold.Sold;
+import com.springboot.fiveteam.domain.sold.SoldRepository;
 import com.springboot.fiveteam.domain.user.User;
 import com.springboot.fiveteam.domain.user.UserRepository;
 import com.springboot.fiveteam.web.dto.SalesDto;
+import com.springboot.fiveteam.web.dto.SoldDto;
 import com.springboot.fiveteam.web.dto.UserDto;
 import com.springboot.fiveteam.web.dto.UserSearchReqDto;
 import com.springboot.fiveteam.web.dto.UserSearchRespDto;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class ManagerController {
@@ -33,6 +35,9 @@ public class ManagerController {
 	@Autowired
 	private SalesRepository salesRepository;
 	
+	@Autowired
+	private SoldRepository soldRepository;
+
 	@Autowired
 	private HttpSession session;
 	
@@ -57,12 +62,14 @@ public class ManagerController {
 	
 	@GetMapping("/manager")
 	public String managerHome(Model model, SalesDto salesDto) {
-		 User managerEntity = userRepository.mfind();
-		 managerEntity = (User) session.getAttribute("managerPrincipal");
-		  
-		  if (managerEntity == null) {
-		      return "auth/managerSignin";
-		    }
+		User managerEntity = (User) userRepository.mfind();
+		if (managerEntity.getUser_role().equals("ROLE_MANAGER")) {
+			managerEntity = (User) session.getAttribute("managerPrincipal");
+		}
+				  
+		if (managerEntity == null) {
+			return "auth/managerSignin";
+		}
 		    model.addAttribute("salesEntity", salesRepository.findAll(salesDto));
 
 		    return "manager/managerHome";
@@ -92,7 +99,7 @@ public class ManagerController {
 	  @PostMapping("/manager/deleteProduct/{id}")
 	  public String deleteProduct(@PathVariable int id) {
 	  User managerEntity = userRepository.mfind();
-	 managerEntity = (User) session.getAttribute("managerPrincipal");
+	  managerEntity = (User) session.getAttribute("managerPrincipal");
 				  
 	  if (managerEntity == null) {
 	      return "auth/managerSignin";
@@ -103,15 +110,71 @@ public class ManagerController {
 	    return "redirect:/manager";
 	  }
 	  
+	// 상품 수정 페이지로 이동
+	  @GetMapping("/manager/product/{id}")
+	  public String updateForm(@PathVariable int id, Model model) {
+		User managerEntity = (User) userRepository.mfind();
+		if (managerEntity.getUser_role().equals("ROLE_MANAGER")) {
+			managerEntity = (User) session.getAttribute("managerPrincipal");
+		}
+			  
+		if (managerEntity == null) {
+		      return "auth/managerSignin";
+		}
+	    Sales salesEntity = salesRepository.findById(id);
+	    model.addAttribute("salesEntity", salesEntity);
+
+	    return "manager/updateProduct";
+	  }
+	  
+	// 수정 완료 후 상품 상세보기 페이지로 이동
+	  @PostMapping("/manager/product/{id}")
+	  public String update(@PathVariable int id, SalesDto salesDto) {
+		User managerEntity = (User) userRepository.mfind();
+		if (managerEntity.getUser_role().equals("ROLE_MANAGER")) {
+			managerEntity = (User) session.getAttribute("managerPrincipal");
+		}
+				  
+		if (managerEntity == null) {
+			      return "auth/managerSignin";
+		}
+		String imageFileName = salesDto.getSalesImg().getOriginalFilename();
+		  
+		Sales salesEntity = salesDto.toEntity();
+		salesEntity.setSalesImg(imageFileName);
+		
+		System.out.println("imageFileName : " + imageFileName);
+		
+	    if (imageFileName == null || imageFileName.equals("")) {
+	    } else {
+	    	salesEntity.setSalesImg(imageFileName);
+	    }
+	    
+	    salesEntity.setCategory(salesDto.getCategory());
+	    salesEntity.setSales_title(salesDto.getSales_title());
+	    salesEntity.setSales_price(salesDto.getSales_price());
+	    salesEntity.setSales_content(salesDto.getSales_content());
+	    
+	    salesEntity.setSales_size(salesDto.getSales_size());
+	    salesEntity.setSales_color(salesDto.getSales_color());
+	    
+	    salesRepository.productUpdate(salesEntity);
+
+	    return "redirect:/manager/detail/{id}";
+	  }
+	  
+	  
 	  // 회원관리자 페이지 이동
 	  @GetMapping("/manager/userlist")
 	  public String userListForm(Model model, Integer page) {
-		 User managerEntity = userRepository.mfind();
-		 managerEntity = (User) session.getAttribute("managerPrincipal");
-					  
-		  if (managerEntity == null) {
-		      return "auth/managerSignin";
-		    }
+		User managerEntity = (User) userRepository.mfind();
+		if (managerEntity.getUser_role().equals("ROLE_MANAGER")) {
+			managerEntity = (User) session.getAttribute("managerPrincipal");
+		}
+				  
+		if (managerEntity == null) {
+			return "auth/managerSignin";
+		}
 		  if (page == null) {
 		      page = 0;
 		    }
@@ -136,8 +199,14 @@ public class ManagerController {
 	  // 회원 관리 페이지에서 이름 검색
 	  @PostMapping("/manager/searchname")
 	  public @ResponseBody UserSearchRespDto<List> searchUser(@RequestBody UserSearchReqDto dto){
-		  User managerEntity = userRepository.mfind();
-		  managerEntity = (User) session.getAttribute("managerPrincipal");
+		  User managerEntity = (User) userRepository.mfind();
+			if (managerEntity.getUser_role().equals("ROLE_MANAGER")) {
+				managerEntity = (User) session.getAttribute("managerPrincipal");
+			}
+				/*	  여기 구멍
+			if (managerEntity == null) {
+				return "auth/managerSignin";
+			}*/
 		 
 		 List<User> userEntity = userRepository.mfindUserList(dto.getName());
 		 
@@ -152,29 +221,32 @@ public class ManagerController {
 		 }
 	  }
 	  
-	  // 상품 등록 페이지
+	  // 상품 등록 페이지 이동
 	  @GetMapping("manager/upload-product")
 	  public String uploadProductForm() {
-		 User managerEntity = userRepository.mfind();
-		 managerEntity = (User) session.getAttribute("managerPrincipal");
+		  User managerEntity = (User) userRepository.mfind();
+			if (managerEntity.getUser_role().equals("ROLE_MANAGER")) {
+				managerEntity = (User) session.getAttribute("managerPrincipal");
+			}
 					  
-		  if (managerEntity == null) {
-		      return "auth/managerSignin";
-		    }
+			if (managerEntity == null) {
+				return "auth/managerSignin";
+			}
 		  return "manager/uploadProduct";
 	  }
 	  
 	  // 상품 업로드
 	  @PostMapping("/manager/upload")
 	  public String upload(SalesDto salesDto) {
-		  System.out.println(salesDto.getSalesImg().getOriginalFilename());
-		 User managerEntity = userRepository.mfind();
-		 managerEntity = (User) session.getAttribute("managerPrincipal");
-		 System.out.println(managerEntity);
+		 System.out.println(salesDto.getSalesImg().getOriginalFilename());
+		 User managerEntity = (User) userRepository.mfind();
+			if (managerEntity.getUser_role().equals("ROLE_MANAGER")) {
+				managerEntity = (User) session.getAttribute("managerPrincipal");
+			}
 					  
-		  if (managerEntity == null) {
-		      return "auth/managerSignin";
-		    }
+			if (managerEntity == null) {
+				return "auth/managerSignin";
+			}
 		  System.out.println(salesDto);
 		  
 		  // 파일 이름 저장
@@ -186,21 +258,25 @@ public class ManagerController {
 		  return "redirect:/manager";
 	  }
 	  
-	  // 판매현황 페이지
+	  // 판매현황 페이지 이동
 	  @GetMapping("/manager/sales-status")
-	  public String salesStatusForm(Model model, Integer page) {
-		  User managerEntity = userRepository.mfind();
-		  managerEntity = (User) session.getAttribute("managerPrincipal");
-		  
-		  if(managerEntity == null) {
-			  return "auth/managerSignin";
-		  }
+	  public String salesStatusForm(Model model, Integer page, SoldDto soldDto) {
+		  User managerEntity = (User) userRepository.mfind();
+			if (managerEntity.getUser_role().equals("ROLE_MANAGER")) {
+				managerEntity = (User) session.getAttribute("managerPrincipal");
+			}
+					  
+			if (managerEntity == null) {
+				return "auth/managerSignin";
+			}
 		  if (page == null) {
 		      page = 0;
 		  }
-		  /*
-		    List<Saleditems> saleditems = saledItemsRepository.findAll();
+		  	
+		    List<Sold> saleditems = soldRepository.itemFindAll();
+		    /*
 		    if (saleditems != null) {
+		    	
 		      // 총 판매량
 		      Long amount = managerRepository.mfindAmount();
 		      // 총 판매 액
@@ -208,9 +284,10 @@ public class ManagerController {
 		      model.addAttribute("amount", amount);
 		      model.addAttribute("totalPrice", totalPrice);
 		    }
-		    model.addAttribute("saledItemsEntity", saledItemsRepository.findAll(PageRequest.of(page, 5)));
+		    */
+		    model.addAttribute("soldEntity", saleditems);
 
-		   */
+		   
 		  
 		  return "manager/salesStatus";
 	  }
@@ -219,11 +296,14 @@ public class ManagerController {
 	  // manager Logout
 	  @GetMapping("/manager/logout")
 	  public String managerLogout() {
-		 User managerEntity = userRepository.mfind();
-		 managerEntity = (User) session.getAttribute("managerPrincipal");
-	    if (managerEntity == null) {
-	      return "auth/managerSignin";
-	    }
+		  User managerEntity = (User) userRepository.mfind();
+			if (managerEntity.getUser_role().equals("ROLE_MANAGER")) {
+				managerEntity = (User) session.getAttribute("managerPrincipal");
+			}
+					  
+			if (managerEntity == null) {
+				return "auth/managerSignin";
+			}
 	    session.invalidate();
 	    return "redirect:/";
 	  }

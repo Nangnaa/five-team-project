@@ -14,10 +14,28 @@
 			#{sales_price},
 			#{sales_content},
 			#{salesImg},
+			#{sales_size},
+			#{sales_color},
 			now(),
 			now()
 		);
 	</insert>
+	
+	<update id="productUpdate" parameterType="com.springboot.fiveteam.domain.sales.Sales">
+		update
+			table_sales
+		set
+			sales_title = #{sales_title},
+			sales_price = #{sales_price},
+			sales_content = #{sales_content},
+			salesImg = #{salesImg},
+			sales_size = #{sales_size},
+			sales_color = #{sales_color},
+			update_date = now()
+		where
+			sales_id = #{sales_id};
+			
+	</update>
 	
 	<select id="findById" parameterType="com.springboot.fiveteam.domain.sales.Sales" resultType="com.springboot.fiveteam.domain.sales.Sales">
 		select
@@ -71,5 +89,17 @@
 			table_sales
 		where
 			sales_id = #{sales_id};
+	</select>
+	
+	<select id="selectGoodsAtt" resultType="com.springboot.fiveteam.domain.sales.Sales"> 
+		<![CDATA[
+			select
+               	group_concat(sales_color ORDER BY sales_color DESC SEPARATOR ',') as sales_color,
+               	group_concat(sales_size ORDER BY sales_size DESC SEPARATOR ',') as sales_size
+			from
+				table_sales
+			where
+	           	sales_id = #{sales_id};	
+		]]>
 	</select>
 </mapper>

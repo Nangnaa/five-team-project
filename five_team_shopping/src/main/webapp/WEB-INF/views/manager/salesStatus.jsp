@@ -58,7 +58,7 @@
                             <col width="*">
                         </colgroup>
                         <c:choose>
-                            <c:when test="${!empty saledItemsEntity}">
+                            <c:when test="${!empty soldEntity}">
             
                                 <thead>
                                     <tr>
@@ -71,17 +71,17 @@
                                     </tr>
                                 </thead>
                             <tbody id="notice">
-                                <c:forEach var="saleditems" items="${saledItemsEntity.content}">
+                                <c:forEach var="sold" items="${soldEntity}">
                                 <tr>     
-                                    <td>${saleditems.id}</td>     
-                                    <td>${saleditems.user.name}</td>
-                                    <td class="left"><a>${saleditems.product.productName}</a></td>     
-                                    <td>${saleditems.date}</td>     
-                                    <td>${saleditems.product.price}</td> 
-                                    <td>1</td>
+                                    <td>${sold.sold_id}</td>     
+                                    <td>${sold.user_name}</td>
+                                    <td class="left"><a>${sold.sales_id}</a></td>     
+                                    <td>${sold.sold_date}</td>     
+                                    <td>${sold.sales_price}</td> 
+                                    <td>0</td>
                                 </tr> 
                                 </c:forEach>
-                                
+                               <!-- 
                                 <tr class="last_tr">      
                                     <td>No.</td>     
                                     <td>구매자</td> 
@@ -90,7 +90,7 @@
                                     <td>총 액 : ${totalPrice}</td> 
                                     <td>총 판매수량 : ${amount}</td>
                                 </tr>
-            
+             -->
                         
                             </c:when>
                         <c:otherwise>
@@ -105,6 +105,7 @@
                             </tr>
                             </thead>
                             <tbody id="notice">
+                            <!-- 
                                 <tr class="last_tr">      
                                     <td>No.</td>     
                                     <td>구매자</td> 
@@ -113,6 +114,7 @@
                                     <td>총 액 : 0</td> 
                                     <td>총 판매수량 : 0</td>
                                 </tr>
+                                 -->
                             </c:otherwise>
                         </c:choose>
                     </tbody>

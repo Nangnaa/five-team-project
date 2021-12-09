@@ -14,13 +14,13 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class SalesController {
 	
-	private final SalesService categoryService;
+	private final SalesService salesService;
 	
 	@GetMapping("/category/{category}")
 	public ModelAndView categoryForm(Model model, @PathVariable String category) {
 		ModelAndView mav = new ModelAndView("sales/category");
 		model.addAttribute("salesCategory", category);
-		model.addAttribute("salesList", categoryService.getSalesList(category));
+		model.addAttribute("salesList", salesService.getSalesList(category));
 		return mav;
 	}
 	
@@ -28,7 +28,7 @@ public class SalesController {
 	public ModelAndView categorySearchForm(Model model, @PathVariable String category, @PathVariable String sales_title) {
 		ModelAndView mav = new ModelAndView("sales/category");
 		model.addAttribute("salesCategory", category);
-		model.addAttribute("salesList", categoryService.getSalesListSearch(category, sales_title));
+		model.addAttribute("salesList", salesService.getSalesListSearch(category, sales_title));
 		return mav;
 	}
 	
