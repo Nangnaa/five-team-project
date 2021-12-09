@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.springboot.fiveteam.domain.user.UserRepository">
+	<select id="usernameCheck" parameterType="com.springboot.fiveteam.domain.user.User" resultType="Integer">
+		select
+			count(user_id)
+		from
+			table_user
+		where
+			user_id = #{user_id};
+	</select>
+	
+	<insert id="signup" parameterType="com.springboot.fiveteam.domain.user.User">
+		insert into
+			table_user
+		values(
+			0,
+			#{user_id},
+			#{user_password},
+			#{user_name},
+			#{user_zipcode},
+			#{user_address1},
+			#{user_address2},
+			#{user_tel},
+			#{user_email},
+			#{user_role},
+			#{provider},
+			now(),
+			now()
+		);
+	</insert>
+	<!-- USER -->
+ 	<select id="CountByid" resultType="Integer">
+ 		SELECT count(*) FROM cart c JOIN product p ON c.productId=p.id where c.sales_id=#{sales_id} AND p.delDt is null
+ 	</select>
+ 	
+ 	<select id="findAll" resultType="com.example.shop.model.Cart">
+ 		SELECT c.id, p.id as productId, p.filePath, p.productNm, p.price, c.cnt, s.id saleId, s.amount, s.unitCd, s.endDate 
+		FROM cart c  
+		JOIN product p  
+		ON c.productId=p.id  
+		LEFT OUTER JOIN sale s 
+		ON p.id=s.productId and endDate>=#{today} 
+		WHERE c.sales_id=#{sales_id} and p.delDt is null;
+ 	</select>
+ 	
+ 	<insert id="save">
+ 		INSERT INTO cart VALUES(null, #{productId}, #{cnt}, #{sales_id}, now(), null)
+ 	</insert>
+ 	
+ 	<delete id="delete">
+ 		DELETE FROM cart WHERE id = #{id}
+ 	</delete>
+ 	
+ 	<update id="update">
+ 		UPDATE cart SET updDt=now(), cnt=#{cnt} WHERE id=#{id}
+ 	</update>
+</mapper>

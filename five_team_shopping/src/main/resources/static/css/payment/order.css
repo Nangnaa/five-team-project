@@ -1,0 +1,201 @@
+.container {
+    
+}
+
+.main{
+    margin: 0px auto;
+    padding-top: 70px;
+    width: 1000px;
+    box-sizing: border-box;
+}
+
+.order_sheet{
+    
+    text-align: center;}
+
+.item_ifm{
+    width: 1000px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+.item_sheet{
+    width: 1000px;
+    border-bottom: 2px solid black;
+    }
+    .item_sheet .thumb{
+        width: 100px;
+        text-align: left;
+        padding: 0px 15px 15px 0;
+        }
+    .item_sheet .product{
+        text-align: left;
+    }
+.header_in{
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    height: 5px;
+    }
+
+    .required{
+    color: #353535;
+    text-align: center;
+}
+
+.item_msg .name_errorm{
+    display: none;
+}
+.item_msg .addErrorMsg{
+    display: none;
+}
+.item_msg .addErrorM{
+    display: none;
+}
+
+
+.item_tf {
+    box-sizing: border-box;
+    width: 800px;
+    height: 48px;
+    margin: 50px 0;
+}
+
+.item_tf .item_box{
+    box-sizing: border-box ;
+    width: 1000px;
+    height: 50px;
+}
+
+.item_add{
+    display: flex;
+    width: 1000px;
+    height: 48px;
+    margin: 0 30px 20px 0;
+    
+    
+}
+.item_box_add, .address_input_1{
+    width: 1000px;
+    margin: 0px 30px 20px 0;
+}
+.address_input_1 > button{
+   align-items: center;
+}
+
+.address_input_2, .address_input_3{
+    box-sizing: border-box ;
+    width: 1000px;
+    height: 50px;
+}
+
+
+
+.add_number{
+    display: flex;
+    align-items: center;
+}
+.add_btn{
+    background-color: black;
+    color: white;
+    width: 120px;
+    height: 50px;
+}
+.addrr{
+    display: flex;
+  
+}
+
+.addrr > .address_input_1{
+    background-color: black;
+    color: white;
+    width: 120px;
+    margin:0;
+    height: 50px;
+}
+
+#main_add, #sub_add{
+    width: 1000px;
+    margin-bottom: 20px;
+}
+
+.add_num{
+    display: flex;
+    width: 860px;
+    margin: 0 0 20px 0;
+    
+}
+.add_btns{
+    float: right;
+    background-color: black;
+    color: white;
+    width: 140px;
+    height: 50px;
+    
+}
+
+.item_tel{width: 1000px;
+margin-bottom: 20px;}
+.item_tel select, input{
+    width: 323px;
+    height: 50px;
+}
+.item_email{width: 1000px;
+margin-top: 45px;}
+.email_box{
+    width: 315px;
+    height: 50px;
+}
+
+
+.shopping_if{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 45px;
+    box-sizing: border-box;
+}
+
+.order_new_if {
+    display: flex;
+    width: 1000px;
+    
+}
+.order_new_if > input {
+    width: 20px;
+    margin-right: 5px;
+}
+.order_new_if > label{
+    text-align: center;
+    line-height: 50px;
+    margin-right: 10px;
+}
+
+.text_aread{
+    margin-top: 20px;
+}
+
+.total_sheet{
+    width: 1000px;
+    border: 1px solid black;
+    padding: 16px;
+}
+.total_sheet > div{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.check_order input{
+    width: 20px;
+}
+.check_order label{
+    padding-top: 10px;
+}
+
+.payment{
+    width: 950px;
+    color: white;
+    background-color: black;
+    font-size: 20px;
+}
