@@ -78,7 +78,7 @@
                                     <td class="left"><a>${sold.sales_id}</a></td>     
                                     <td>${sold.sold_date}</td>     
                                     <td>${sold.sales_price}</td> 
-                                    <td>0</td>
+                                    <td>1</td>
                                 </tr> 
                                 </c:forEach>
                                <!-- 

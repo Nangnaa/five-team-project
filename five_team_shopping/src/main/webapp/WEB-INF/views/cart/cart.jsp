@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/payment/cart.css">
+    <link rel="stylesheet" href="/css/payment/cart.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -45,11 +45,11 @@
                             <div class="middlespace_left_info">
                             <c:forEach  items="${map.list}">
                                 <div class="middlespace_left_info_">${product_name }</div>
-                                <div class="middlespace_left_info_price"><fmt:formatNumber value="${product_price}"
-                            pattern="#,###,###" /></div>
+                                <div class="middlespace_left_info_price"><fmt:formatNumber value="${product_price}" pattern="#,###,###" /></div>
                                 <div class="middlespace_left_info_option">
                                     <div>${option}</div><div class="middlespace_left_info_optionmodify">변경</div>
                                 </div>
+
                                 <div class="middlespace_left_info_quantitybutton">
                                     <div class="quantity_button_number">
                                     <c:forEach begin:"1" end="10" var="i">
@@ -59,19 +59,7 @@
                                 </div>
                             </div>
                         </div>
-						<!--<c:if test="${!empty principal.user }">
-							<div>
-							   	<div class="container">
-								    <label for="commentContent">리뷰 작성하기(10~200자 내외)</label>
-								    <textarea rows="5" cols="50" style="width: 100%; height: 88px; resize: none; outline: none; border: 1px solid #dddddd" maxlength="512" id="reviewWrite_Content"></textarea>
-								    <input type="hidden" id="reviewWrite_userid" value="${principal.user.user_id }">
-								    별점 : <img src="/images/star_selected.png" class="reviewWrite_stars" width="28px" height="28px"><img src="/images/star_selected.png" class="reviewWrite_stars" width="28px" height="28px"><img src="/images/star_selected.png" class="reviewWrite_stars" width="28px" height="28px"><img src="/images/star.png" class="reviewWrite_stars" width="28px" height="28px"><img src="/images/star.png" class="reviewWrite_stars" width="28px" height="28px">
-								    <input type="hidden" id="star_score" value="3">
-								    <button type="button" class="btn btn-primary" id="reviewWriteButton" >리뷰 작성</button>
-								    <input type="hidden" id="currentCategory" value="${currentCategory }">
-							    </div>
-							</div>
-						</c:if>-->
+					
                         
                         <div class="middlespace_left_content_east">
                             <div class="middlespace_left_deletebutton">
@@ -88,16 +76,14 @@
                     <div class="middlespace_right_info">
                         <div class="salesprice">
                             <div>상품 합계금액</div><div>
-                            <fmt:formatNumber value="${sumMoney}"
-                            pattern="#,###,###" />
+                            <fmt:formatNumber value="${sumMoney}" pattern="#,###,###" />
                             </div>
                         </div>
                         <div class="deliveryprice">
                             <div>배송비</div><div>${delivery_pay }</div>
                         </div>
                         <div class="totalprice">
-                            <div><strong>전체금액</strong></div><div><fmt:formatNumber value="${AllSum }"
-                            pattern="#,###,###" /></div>
+                            <div><strong>전체금액</strong></div><div><fmt:formatNumber value="${AllSum }" pattern="#,###,###" /></div>
                         </div>
                     </div>
                     <hr>
@@ -204,6 +190,6 @@ function fn_allPrice(){ //전체주문금액구하기
 	document.getElementById("all_order_price").value = pay;
 	
 }
-    
+    </script>
 </body>
 </html>

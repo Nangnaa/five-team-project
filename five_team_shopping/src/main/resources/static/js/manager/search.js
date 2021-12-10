@@ -35,11 +35,12 @@ async function searchByName(){
         let userItem = document.createElement("tr");
         let temp = `
         
-        <td>${users.user_id}</td>
-        <td class="left"><a>${users.user_name}</a></td>
-        <td><a>${users.user_email}</a></td>
-        <td><a>${users.create_date}</a></td>
-        <td>0</td>
+        <td>${users.user_id}</td> 
+        <td><a>${users.user_name}</a></td> 
+        <td>${users.user_tel}</td>
+        <td>${users.user_address1}  ${users.user_address2}</td>      
+        <td>${users.user_email}</td>     
+        <td>${users.create_date}</td> 
         
       `;
 
@@ -91,11 +92,11 @@ async function categorySearch() {
     itemsByCategory.forEach((items) => {
       let itemLine = document.createElement("tr");
       let innerLine = `
-      <td>${items.id}</td>     
-      <td>${items.user.name}</td>
-      <td class="left"><a>${items.product.productName}</a></td>     
-      <td>${items.date}</td>     
-      <td>${items.product.price}</td> 
+      <td>${items.sold_id}</td>     
+      <td>${items.user_name}</td>
+      <td class="left"><a>${items.sales_title}</a></td>     
+      <td>${items.sold_date}</td>     
+      <td>${items.sales_price}</td> 
       <td>1</td>  
       `;
 
@@ -146,11 +147,11 @@ async function saledItemByName() {
     saleditems.forEach((saled) => {
       let userItem = document.createElement("tr");
       let temp = `
-      <td>${saled.id}</td>     
-      <td>${saled.user.name}</td>
-      <td class="left"><a>${saled.product.productName}</a></td>     
-      <td>${saled.date}</td>     
-      <td>${saled.product.price}</td> 
+      <td>${sold.sold_id}</td>     
+      <td>${sold.user_name}</td>
+      <td class="left"><a>${sold.sales_title}</a></td>     
+      <td>${sold.sold_date}</td>     
+      <td>${sold.sales_price}</td> 
       <td>1</td>    
     `;
 
