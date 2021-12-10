@@ -63,6 +63,31 @@ img{
 
 }
 
+.quantity_box {
+	display: flex;
+	padding-bottom: 20px;
+}
+
+.quantity_button_number{
+	margin-left:5px;
+}
+
+.quantity_button_number,
+.quantity_button_plus,
+.quantity_button_minus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.quantity_button_plus:hover, .quantity_button_minus:hover {
+	cursor:pointer;
+}
+
 select{
     width: 100%;
     height: 43px;

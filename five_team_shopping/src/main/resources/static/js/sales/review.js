@@ -81,13 +81,12 @@ reviewWriteButton.onclick = () => {
 	}
 }
 
-function execution_review_delete(){
-	const review_reviewid = document.querySelector('#review_reviewid');
+function execution_review_delete(review_id){
 	
     if (confirm("작성하신 리뷰를 삭제합니다.")) {
     	$.ajax({
         	type:"delete",
-        	url:"/category/" + currentCategory.value + "/salesview/salesid:" + review_salesid.value + "/deleteReview:" + review_reviewid.value,
+        	url:"/category/" + currentCategory.value + "/salesview/salesid:" + review_salesid.value + "/deleteReview:" + review_id,
         	dataType:"text",
         	success: function(data) {
         		if (data == 1) {

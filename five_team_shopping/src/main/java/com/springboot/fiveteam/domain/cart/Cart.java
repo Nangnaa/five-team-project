@@ -2,8 +2,6 @@ package com.springboot.fiveteam.domain.cart;
 
 import java.util.Date;
 
-import com.springboot.fiveteam.domain.user.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,13 +12,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor // 기본생성자
 @Data
 public class Cart {
-	public int cart_id;
-	public String user_id;
-	public String sales_id;
-	public int cart_price;
-	public int cart_qty;
-	public String sales_title; //제품이름
-	public String option;
-	public String main_origin_file_name;
+	private int cart_id;
+	private String user_id;
+	private int sales_id;
+	private String category;
+	private String salesImg;
+	private String sales_title;
+	private int sales_price;
+	private int sales_quantity;
+	private String sales_size;
+	private String sales_color;
+	private Date create_date;
+	private int seqnum;
 }
-

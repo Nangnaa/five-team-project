@@ -3,59 +3,55 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.springboot.fiveteam.domain.user.UserRepository">
-	<select id="usernameCheck" parameterType="com.springboot.fiveteam.domain.user.User" resultType="Integer">
-		select
-			count(user_id)
-		from
-			table_user
-		where
-			user_id = #{user_id};
+<mapper namespace="com.springboot.fiveteam.domain.cart.CartRepository">
+	<!-- 장바구니 추가 -->
+	<insert id="writeCart" parameterType="com.springboot.fiveteam.domain.cart.Cart">
+		insert into table_cart
+		values(0,#{user_id},#{sales_id},#{sales_quantity},#{sales_size},#{sales_color},now());
+	</insert>
+	
+	<!-- 장바구니 조회 -->
+	<select id="getCartList" parameterType="Integer" resultType="com.springboot.fiveteam.domain.cart.Cart">
+		select tc.cart_id, tc.user_id, tc.sales_id, ts.sales_title, ts.sales_price, ts.category, ts.salesImg, tc.sales_quantity, tc.sales_size, tc.sales_color, tc.create_date, tu.seqnum
+		from table_cart tc LEFT OUTER JOIN table_user tu on tc.user_id = tu.user_id LEFT OUTER JOIN table_sales ts on tc.sales_id = ts.sales_id
+		where tu.seqnum=#{seqnum}
+		order by tc.cart_id desc;
 	</select>
 	
-	<insert id="signup" parameterType="com.springboot.fiveteam.domain.user.User">
-		insert into
-			table_user
-		values(
-			0,
-			#{user_id},
-			#{user_password},
-			#{user_name},
-			#{user_zipcode},
-			#{user_address1},
-			#{user_address2},
-			#{user_tel},
-			#{user_email},
-			#{user_role},
-			#{provider},
-			now(),
-			now()
-		);
-	</insert>
-	<!-- USER -->
- 	<select id="CountByid" resultType="Integer">
- 		SELECT count(*) FROM cart c JOIN product p ON c.productId=p.id where c.sales_id=#{sales_id} AND p.delDt is null
- 	</select>
- 	
- 	<select id="findAll" resultType="com.example.shop.model.Cart">
- 		SELECT c.id, p.id as productId, p.filePath, p.productNm, p.price, c.cnt, s.id saleId, s.amount, s.unitCd, s.endDate 
-		FROM cart c  
-		JOIN product p  
-		ON c.productId=p.id  
-		LEFT OUTER JOIN sale s 
-		ON p.id=s.productId and endDate>=#{today} 
-		WHERE c.sales_id=#{sales_id} and p.delDt is null;
- 	</select>
- 	
- 	<insert id="save">
- 		INSERT INTO cart VALUES(null, #{productId}, #{cnt}, #{sales_id}, now(), null)
- 	</insert>
- 	
- 	<delete id="delete">
- 		DELETE FROM cart WHERE id = #{id}
- 	</delete>
- 	
- 	<update id="update">
- 		UPDATE cart SET updDt=now(), cnt=#{cnt} WHERE id=#{id}
- 	</update>
+	<!-- 장바구니 상품수 -->
+	<select id="getCartCount" parameterType="Integer" resultType="Integer">
+		select count(*) 
+		from table_cart tc LEFT OUTER JOIN table_user tu on tc.user_id = tu.user_id
+		where tu.seqnum=#{seqnum};
+	</select>
+	
+	<!-- 장바구니 내 특정 상품 삭제 -->
+	<delete id="deleteCartOne" parameterType="Integer">
+		delete from table_cart where cart_id=#{cart_id};
+	</delete>
+	
+	<!-- 장바구니 내 전체 상품 삭제 -->
+	<delete id="deleteCartAll" parameterType="String">
+		delete from table_cart where user_id=#{user_id};
+	</delete>
+	
+	<!-- 장바구니 내 한 상품 수량+1 -->
+	<update id="cartOnePlus" parameterType="Integer">
+		update
+			table_cart 
+		set
+			sales_quantity = sales_quantity + 1
+		where
+			cart_id = #{cart_id}
+	</update>
+	
+	<!-- 장바구니 내 한 상품 수량-1 -->
+	<update id="cartOneMinus" parameterType="Integer">
+		update
+			table_cart 
+		set
+			sales_quantity = sales_quantity - 1
+		where
+			cart_id = #{cart_id}
+	</update>
 </mapper>
