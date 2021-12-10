@@ -20,7 +20,7 @@ public class Sales {
 	private int sales_id;
 	
 	 @Transient
-    private List<String> categorys = Arrays.asList("outer", "top", "pants", "skirt", "jewerly", "bagandshoes");
+    private List<String> categorys = Arrays.asList("outer", "top", "pants", "skirt", "jewerly", "bag&shoes");
 	
 	private String category;
 	private String sales_title;

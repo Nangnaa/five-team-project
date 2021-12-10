@@ -95,7 +95,6 @@
 	</select>
 	
 	<select id="selectGoodsAtt" resultType="com.springboot.fiveteam.domain.sales.Sales"> 
-		<![CDATA[
 			select
                	group_concat(sales_color ORDER BY sales_color DESC SEPARATOR ',') as sales_color,
                	group_concat(sales_size ORDER BY sales_size DESC SEPARATOR ',') as sales_size
@@ -103,6 +102,5 @@
 				table_sales
 			where
 	           	sales_id = #{sales_id};	
-		]]>
 	</select>
 </mapper>

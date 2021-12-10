@@ -23,7 +23,7 @@ hr {
 .middlespace_left {
   margin: 20px;
   width: 750px;
-  height: 400px;
+  height: 100%;
 }
 
 .middlespace_left_content,
@@ -36,6 +36,7 @@ hr {
 .middlespace_left_content {
   justify-content: space-between;
   font-weight: 200;
+  margin: 20px 0px;
 }
 
 .middlespace_left_checkbox {

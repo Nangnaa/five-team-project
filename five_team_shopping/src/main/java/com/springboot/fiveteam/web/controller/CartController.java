@@ -1,90 +1,80 @@
 package com.springboot.fiveteam.web.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.springboot.fiveteam.domain.user.UserRepository;
+import com.springboot.fiveteam.config.auth.PrincipalDetails;
+import com.springboot.fiveteam.domain.sales.Sales;
+import com.springboot.fiveteam.web.dto.CartDto;
+import com.springboot.fiveteam.web.service.CartService;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class CartController {
-	@Autowired
-	private UserRepository userRepository;
 	
-	@Autowired
-	private HttpSession session;
+	private final CartService cartService;
 	
-	@GetMapping("cart/cart")
-	public String CartIn() {
-		return "cart/cart";
+	@ResponseBody
+	@PostMapping("/cart/writeCart")
+	public String cartWrite(@RequestBody CartDto cartDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		if (principalDetails == null) { // 로그인 상태가 아닐경우
+			return "2";
+		} else { // 로그인 상태일경우
+			int result = cartService.writeCart(cartDto);
+			return Integer.toString(result);
+		}
+		
 	}
 	
-//	@RequestMapping(value = "/cart/cart", method = RequestMethod.POST)
-//	public ModelAndView insertBasket(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품디테일에서 장바구니 추가 
-//		ModelAndView mv = new ModelAndView("redirect:/shop/goodsDetail.do");
-//		
-//		commandMap.remove("resultList");
-//		Object MEMBER_NO = "";
-//		// 세션값 가져오기
-//		HttpSession session = request.getSession();
-//		MEMBER_NO = (Object) session.getAttribute("SESSION_NO");
-//		// 기존 회원번호 데이터 삭제
-//		commandMap.remove("MEMBER_NO");
-//		// 세션 값으로 적용
-//		commandMap.put("MEMBER_NO", MEMBER_NO);
-//		
-//		//장바구니에 넣을 상품이 한개일때
-//		if (commandMap.get("ORDER_SIZE").getClass().getName().equals("java.lang.String")) { 
-//			Map<String, Object> map = new HashMap<String, Object>();
-//			System.out.println("CommandMap1=" + commandMap.getMap());
-//			map.put("IDX", commandMap.get("IDX"));
-//			map.put("MEMBER_NO", commandMap.get("MEMBER_NO"));
-//			map.put("ORDER_SIZE", commandMap.get("ORDER_SIZE"));
-//			map.put("ORDER_COLOR", commandMap.get("ORDER_COLOR"));
-//			map.put("BASKET_GOODS_AMOUNT", commandMap.get("BASKET_GOODS_AMOUNT"));
-//			map.put("GUBUN", "0");
-//			goodsService.insertBasket(map, request);
-//		} else { //장바구니에 넣을 상품이 두가지 이상일때(색상,사이즈가 다른) 
-//			System.out.println("CommandMap2=" + commandMap.getMap());
-//			String[] Size = (String[]) commandMap.getMap().get("ORDER_SIZE");
-//			String[] Color = (String[]) commandMap.getMap().get("ORDER_COLOR");
-//			String[] Amount = (String[]) commandMap.getMap().get("BASKET_GOODS_AMOUNT");
-//			String[] Goods_No = (String[]) commandMap.getMap().get("IDX");
-//			System.out.println("다중 사이즈0=" + Goods_No[0]);
-//			System.out.println("다중 사이즈1=" + Goods_No[1]);
-//			Map<String, Object> map1 = new HashMap<String, Object>();
-//			
-//			for (int j = 0; j <= Size.length - 1; j++) {
-//				map1.put("ORDER_SIZE", Size[j]);
-//				map1.put("ORDER_COLOR", Color[j]);
-//				map1.put("BASKET_GOODS_AMOUNT", Amount[j]);
-//				map1.put("IDX", Goods_No[j]);
-//				map1.put("MEMBER_NO", commandMap.get("MEMBER_NO"));
-//				map1.put("GUBUN", "0");
-//				System.out.println("Size1111=" + Size[j]);
-//				goodsService.insertBasket(map1, request);
-//			}
-//		}
-//		mv.addObject("IDX", commandMap.getMap().get("IDX"));
-//		return mv;
-//	}
-//	
-//	List<Map<String, Object>> list0 = goodsService.selectBasketNo(commandMap.getMap()); // 장바구니 PK값 가져오기
-//	System.out.println("장바구니넘버111111" + list0.get(0).get("BASKET_NO"));
-//
-//	commandMap.remove("SELECT_BASKET_NO");
-//	commandMap.put("SELECT_BASKET_NO", list0.get(0).get("BASKET_NO"));
-//
-//	List<Map<String, Object>> list = basketService.basketSelectList(commandMap, request); // 장바구니에 있는 정보들 
-//
-//	Map<String, Object> map = orderService.orderMemberInfo(commandMap, request); // 회원의 정보
+	@GetMapping("/cart/{seqnum}")
+	public ModelAndView cart(Model model, @PathVariable int seqnum, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		if (principalDetails == null) { // 로그인 상태가 아닐경우
+			ModelAndView mav = new ModelAndView("auth/signin");
+			return mav; 
+		} else { // 로그인 상태일경우
+			ModelAndView mav = new ModelAndView("cart/cart");
+			model.addAttribute("cartCount", cartService.getCartCount(seqnum));
+			model.addAttribute("cartList", cartService.getCartList(seqnum));
+			return mav;
+		}
+	}
+	
+	@ResponseBody
+	@DeleteMapping("/cart/deletecart/cartid:{cart_id}")
+	public String deleteCartOne(@PathVariable String cart_id) {
+		int result = cartService.deleteCartOne(Integer.parseInt(cart_id));
+		return Integer.toString(result);
+	}
+	
+	@ResponseBody
+	@DeleteMapping("/cart/deletecartall/userid:{user_id}")
+	public String deleteCartAll(@PathVariable String user_id) {
+		int result = cartService.deleteCartAll(user_id);
+		return Integer.toString(result);
+	}
+	
+	@ResponseBody
+	@PutMapping("/cart/cartoneplus/cartid:{cart_id}")
+	public String cartOnePlus(@PathVariable String cart_id) {
+		int result = cartService.cartOnePlus(Integer.parseInt(cart_id));
+		return Integer.toString(result);
+	}
+	
+	@ResponseBody
+	@PutMapping("/cart/cartoneminus/cartid:{cart_id}")
+	public String cartOneMinus(@PathVariable String cart_id) {
+		int result = cartService.cartOneMinus(Integer.parseInt(cart_id));
+		return Integer.toString(result);
+	}
 }

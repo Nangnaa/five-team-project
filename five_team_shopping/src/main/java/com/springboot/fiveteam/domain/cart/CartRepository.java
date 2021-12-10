@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.springboot.fiveteam.web.dto.CartDto;
+
 @Mapper
 public interface CartRepository {
-	//USER
-	public int save(Cart cart);
-	public int delete(Cart cart);
-	public List<Cart> findAll(int sales_id);
-	public int update(Cart cart);
-	public int CountByid(int sales_id );
+	public int writeCart(CartDto cartDto);
+	public List<Cart> getCartList(int seqnum);
+	public int getCartCount(int seqnum);
+	public int deleteCartOne(int cart_id);
+	public int deleteCartAll(String user_id);
+	public int cartOnePlus(int cart_id);
+	public int cartOneMinus(int cart_id);
 }

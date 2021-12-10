@@ -4,6 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
@@ -24,11 +25,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:wght@100;300;600&display=swap" rel="stylesheet">
-    <title>item_view</title>
 </head>
 <body>
     <jsp:include page="../include/index_include/index_header.jsp"/>
-
+	
     <div class="container">
       <div class="inner_header">
         <span class="root_path"><a href="/index">HOME</a></span>
@@ -55,9 +55,8 @@
                                     COLOR
                                 </div>
                                 <div class="option_box">
-                                    <select name="color_select" id="color_select">
-                                        <option value="*" selected="" link_image="">- [필수] 옵션을 선택해 주세요 -</option>
-                                        <option value="**" disabled="" link_image="">-----------------------<option value="*" selected="" link_image="">- [필수] 옵션을 선택해 주세요 -</option></option>
+                                    <select name="select_color" id="select_color">
+                                        <option value="blank" selected="" link_image="">- [필수] 옵션을 선택해 주세요 -</option>
                                         <c:forEach items="${sales_color }" var="sales_color">
 	                                        <option value="${sales_color }" link_image="">${sales_color }</option>
                                         </c:forEach>
@@ -69,15 +68,17 @@
                                     SIZE
                                 </div>
                                 <div class="option_box">
-                                    <select name="color_select" id="color_select">
-                                        <option value="*" selected="" link_image="">- [필수] 옵션을 선택해 주세요 -</option>
-                                        <option value="**" disabled="" link_image="">-----------------------<option value="*" selected="" link_image="">- [필수] 옵션을 선택해 주세요 -</option></option>
+                                    <select name="select_size" id="select_size">
+                                        <option value="blank" selected="" link_image="">- [필수] 옵션을 선택해 주세요 -</option>
                                         <c:forEach items="${sales_size }" var="sales_size">
 	                                        <option value="${sales_size }" link_image="">${sales_size }</option>
                                         </c:forEach>
                                     </select>
                                 </div>
                            </div>
+                       </div>
+                       <div class="quantity_box">
+                       		수량<div class="quantity_button_number">1</div><div class="quantity_button_minus">-</div><div class="quantity_button_plus">+</div>
                        </div>
                        <div class="dtl_btn_box">
                            <button class="dtl_btn">쇼핑백 담기</button>
@@ -87,6 +88,7 @@
                 </div>
             </div>
             ${sales.sales_content }
+            <input type="hidden" id="seqnum" value="${principal.user.seqnum }">
     </div>
     
     <hr>
@@ -139,7 +141,7 @@
 						</c:otherwise>
 					</c:choose>
 					
-					<c:if test="${ principal.user.user_id == review.user_id || principal.user.user_role == 'ROLE_MANAGER'}"><a class="review_delete" onclick="execution_review_delete()">삭제하기</a></c:if>
+					<c:if test="${ principal.user.user_id == review.user_id || principal.user.user_role == 'ROLE_MANAGER'}"><a class="review_delete" onclick="execution_review_delete(${review.review_id })">삭제하기</a></c:if>
 
 		            <textarea rows="5" cols="50" style="width: 100%; height: 88px; resize: none; outline: none; border: 0px solid #dddddd" readonly="readonly" maxlength="512" name="content">${review.review_content }</textarea>
 		        </div>
@@ -163,5 +165,6 @@
 	<jsp:include page="../include/index_include/index_footer.jsp"/>
     </body>
     <script src="https://kit.fontawesome.com/e4d94e4dfb.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/sales/addCartOrBuy.js"></script>
     <script type="text/javascript" src="/js/sales/review.js"></script>
 </html>

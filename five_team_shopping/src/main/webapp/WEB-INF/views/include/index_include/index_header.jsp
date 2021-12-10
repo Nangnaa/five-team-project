@@ -5,7 +5,8 @@
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
-
+<head>
+  <title>teamFive Shoppingmall Project</title>
   <!--bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -37,7 +38,7 @@
 	  	</c:when>
 	  	<c:otherwise>
 	  		<div class="my_ul">
-		      <a href="#"><i class="fas fa-shopping-basket"></i></a>
+		      <a href="/cart/${principal.user.seqnum}"><i class="fas fa-shopping-basket"></i></a>
 		      <a href="/myaccount"><i class="fas fa-user-circle"></i></a>
 		      <a href="/logout"><i class="fas fa-sign-out-alt"></i></a>
 		    </div>
